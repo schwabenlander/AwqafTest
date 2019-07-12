@@ -46,6 +46,9 @@ namespace AwqafTest.Controllers
         // GET: FiscalYears/Create
         public IActionResult Create()
         {
+            // Set NextId to the current maximum value of FISCAL_YEAR_ID + 1
+            TempData["NextId"] = _awqafData.GetMaxFiscalYearId() + 1;
+
             return View();
         }
 
@@ -56,7 +59,7 @@ namespace AwqafTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(FiscalYearViewModel viewModel)
         {
-            // Check to see if FiscalYearId already exists
+            // Check to see if FISCAL_YEAR_ID already exists
             if (_awqafData.GetFiscalYearById(viewModel.FiscalYearId) != null)
             {
                 ModelState.AddModelError("FiscalYearId", "Specified ID already exists.");

@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FiscalYearId" class="control-label">Fiscal Year ID</label>
-                <input asp-for="FiscalYearId" class="form-control" />
+                <input asp-for="FiscalYearId" class="form-control" value="@TempData["NextId"]" />
                 <span asp-validation-for="FiscalYearId" class="text-danger"></span>
             </div>
             <div class="form-group">

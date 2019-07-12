@@ -37,6 +37,11 @@ namespace AwqafTest.Database
             return newFiscalYear;
         }
 
+        public byte GetMaxFiscalYearId()
+        {
+            return _database.FiscalYears.Max(f => f.FiscalYearId);
+        }
+
         public int Save()
         {
             return _database.SaveChanges();
