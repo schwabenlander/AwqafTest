@@ -1,0 +1,54 @@
+﻿@model AwqafTest.Models.FiscalYears
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>FiscalYears</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FiscalYearId" />
+            <div class="form-group">
+                <label asp-for="YearDescription" class="control-label"></label>
+                <input asp-for="YearDescription" class="form-control" />
+                <span asp-validation-for="YearDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsCurrent" class="control-label"></label>
+                <input asp-for="IsCurrent" class="form-control" />
+                <span asp-validation-for="IsCurrent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsOpen" class="control-label"></label>
+                <input asp-for="IsOpen" class="form-control" />
+                <span asp-validation-for="IsOpen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

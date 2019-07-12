@@ -1,17 +1,12 @@
-﻿using System;
+﻿using AwqafTest.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
-namespace AwqafTest.Models
+namespace AwqafTest.Database
 {
     public partial class AwqafContext : DbContext
     {
-        public IConfiguration Configuration { get; }
-
-        public AwqafContext(IConfiguration configuration)
+        public AwqafContext()
         {
-            Configuration = configuration;
         }
 
         public AwqafContext(DbContextOptions<AwqafContext> options)
@@ -28,7 +23,7 @@ namespace AwqafTest.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("AwqafDB"));
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=AWQAF_TEST;Integrated Security=True");
             }
         }
 
