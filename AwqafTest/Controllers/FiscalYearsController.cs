@@ -10,11 +10,11 @@ using AwqafTest.Models;
 
 namespace AwqafTest.Controllers
 {
-    public class FiscalYearController : Controller
+    public class FiscalYearsController : Controller
     {
         private readonly IAwqafDataService _awqafData;
 
-        public FiscalYearController(IAwqafDataService awqafData)
+        public FiscalYearsController(IAwqafDataService awqafData)
         {
             _awqafData = awqafData;
         }
@@ -28,7 +28,7 @@ namespace AwqafTest.Controllers
         }
 
         // GET: FiscalYears/Details/5
-        public IActionResult Details(int id)
+        public IActionResult Details(byte id)
         {
             var fiscalYear = _awqafData.GetFiscalYearById(id);
 
@@ -63,7 +63,7 @@ namespace AwqafTest.Controllers
         }
 
         // GET: FiscalYears/Edit/5
-        public IActionResult Edit(int id)
+        public IActionResult Edit(byte id)
         {
             var fiscalYear = _awqafData.GetFiscalYearById(id);
 
@@ -78,7 +78,7 @@ namespace AwqafTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYear fiscalYear)
+        public IActionResult Edit(byte id, [Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYear fiscalYear)
         {
             if (id != fiscalYear.FiscalYearId)
             {
@@ -96,7 +96,7 @@ namespace AwqafTest.Controllers
         }
 
         // GET: FiscalYears/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Delete(byte id)
         {
             var fiscalYear = _awqafData.GetFiscalYearById(id);
 
@@ -109,7 +109,7 @@ namespace AwqafTest.Controllers
         // POST: FiscalYears/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(byte id)
         {
             var fiscalYear = _awqafData.GetFiscalYearById(id);
 

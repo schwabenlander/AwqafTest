@@ -25,7 +25,7 @@ namespace AwqafTest.Database
             return _database.FiscalYears.SingleOrDefault(f => f.YearDescription == year);
         }
 
-        public FiscalYear GetFiscalYearById(int id)
+        public FiscalYear GetFiscalYearById(byte id)
         {
             return _database.FiscalYears.Find(id);
         }
@@ -45,7 +45,7 @@ namespace AwqafTest.Database
             return updatedFiscalYear;
         }
 
-        public FiscalYear DeleteFiscalYear(int id)
+        public FiscalYear DeleteFiscalYear(byte id)
         {
             var fiscalYear = GetFiscalYearById(id);
 

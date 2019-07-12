@@ -9,10 +9,10 @@ namespace AwqafTest.Database
         // FISCAL_YEARS
         IEnumerable<FiscalYear> GetFiscalYears();
         FiscalYear GetFiscalYear(string year);
-        FiscalYear GetFiscalYearById(int id);
+        FiscalYear GetFiscalYearById(byte id);
         FiscalYear AddFiscalYear(FiscalYear newFiscalYear);
         FiscalYear UpdateFiscalYear(FiscalYear updatedFiscalYear);
-        FiscalYear DeleteFiscalYear(int id);
+        FiscalYear DeleteFiscalYear(byte id);
         int Save();
 
         // ACCOUNTS
