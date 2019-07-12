@@ -61,9 +61,11 @@ namespace AwqafTest.Controllers
         {
             // Check to see if FISCAL_YEAR_ID already exists
             if (_awqafData.GetFiscalYearById(viewModel.FiscalYearId) != null)
-            {
                 ModelState.AddModelError("FiscalYearId", "Specified ID already exists.");
-            }
+
+            // Check to see if EndDate is after StartDate
+            if (viewModel.StartDate >= viewModel.EndDate)
+                ModelState.AddModelError("EndDate", "The End Date must be after the Start Date.");
 
             if (ModelState.IsValid)
             {
