@@ -1,4 +1,4 @@
-﻿@model AwqafTest.Models.FiscalYear
+﻿@model AwqafTest.Models.ViewModels.FiscalYearViewModel
 
 @{
     ViewData["Title"] = "Add New Fiscal Year";
@@ -31,6 +31,16 @@
                 <label asp-for="EndDate" class="control-label"></label>
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsCurrent" class="control-label"></label>
+                <input asp-for="IsCurrent" class="form-control" />
+                <span asp-validation-for="IsCurrent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsOpen" class="control-label"></label>
+                <input asp-for="IsOpen" class="form-control" />
+                <span asp-validation-for="IsOpen" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Add" class="btn btn-primary" />

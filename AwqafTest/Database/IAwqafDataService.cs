@@ -11,8 +11,6 @@ namespace AwqafTest.Database
         FiscalYear GetFiscalYear(string year);
         FiscalYear GetFiscalYearById(byte id);
         FiscalYear AddFiscalYear(FiscalYear newFiscalYear);
-        FiscalYear UpdateFiscalYear(FiscalYear updatedFiscalYear);
-        FiscalYear DeleteFiscalYear(byte id);
         int Save();
 
         // ACCOUNTS

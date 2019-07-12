@@ -1,0 +1,26 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace AwqafTest.Models.ViewModels
+{
+    public class FiscalYearViewModel
+    {
+        [Required, Display(Name = "ID")]
+        public byte FiscalYearId { get; set; }
+
+        [Required, StringLength(4), Display(Name = "Year")]
+        public string YearDescription { get; set; }
+
+        [Required, DataType(DataType.Date), Display(Name = "Start Date")]
+        public DateTime StartDate { get; set; }
+
+        [Required, DataType(DataType.Date), Display(Name = "End Date")]
+        public DateTime EndDate { get; set; }
+
+        [Display(Name = "Is Current?")]
+        public bool IsCurrent { get; set; }
+
+        [Display(Name = "Is Open?")]
+        public bool IsOpen { get; set; }
+    }
+}

@@ -37,24 +37,6 @@ namespace AwqafTest.Database
             return newFiscalYear;
         }
 
-        public FiscalYear UpdateFiscalYear(FiscalYear updatedFiscalYear)
-        {
-            var fiscalYear = _database.FiscalYears.Attach(updatedFiscalYear);
-            fiscalYear.State = EntityState.Modified;
-
-            return updatedFiscalYear;
-        }
-
-        public FiscalYear DeleteFiscalYear(byte id)
-        {
-            var fiscalYear = GetFiscalYearById(id);
-
-            if (fiscalYear != null)
-                _database.FiscalYears.Remove(fiscalYear);
-
-            return fiscalYear;
-        }
-
         public int Save()
         {
             return _database.SaveChanges();
