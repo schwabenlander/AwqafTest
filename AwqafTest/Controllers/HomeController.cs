@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AwqafTest.Models;
+using AwqafTest.Models.ViewModels;
 
 namespace AwqafTest.Controllers
 {

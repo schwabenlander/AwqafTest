@@ -1,6 +1,4 @@
-using System;
-
-namespace AwqafTest.Models
+namespace AwqafTest.Models.ViewModels
 {
     public class ErrorViewModel
     {
