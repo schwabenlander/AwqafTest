@@ -5,10 +5,6 @@ namespace AwqafTest.Database
 {
     public partial class AwqafContext : DbContext
     {
-        public AwqafContext()
-        {
-        }
-
         public AwqafContext(DbContextOptions<AwqafContext> options)
             : base(options)
         {
@@ -18,14 +14,6 @@ namespace AwqafTest.Database
         public virtual DbSet<AccountsLedger> AccountsLedgers { get; set; }
         public virtual DbSet<FiscalYear> FiscalYears { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=AWQAF_TEST;Integrated Security=True");
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

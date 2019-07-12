@@ -13,7 +13,7 @@ namespace AwqafTest.Database
         FiscalYear AddFiscalYear(FiscalYear newFiscalYear);
         FiscalYear UpdateFiscalYear(FiscalYear updatedFiscalYear);
         FiscalYear DeleteFiscalYear(int id);
-        int Commit();
+        int Save();
 
         // ACCOUNTS
 

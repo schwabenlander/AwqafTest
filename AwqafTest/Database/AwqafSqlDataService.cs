@@ -55,7 +55,7 @@ namespace AwqafTest.Database
             return fiscalYear;
         }
 
-        public int Commit()
+        public int Save()
         {
             return _database.SaveChanges();
         }
