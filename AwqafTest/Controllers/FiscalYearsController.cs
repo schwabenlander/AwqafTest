@@ -56,6 +56,12 @@ namespace AwqafTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(FiscalYearViewModel viewModel)
         {
+            // Check to see if FiscalYearId already exists
+            if (_awqafData.GetFiscalYearById(viewModel.FiscalYearId) != null)
+            {
+                ModelState.AddModelError("FiscalYearId", "Specified ID already exists.");
+            }
+
             if (ModelState.IsValid)
             {
                 var fiscalYear = new FiscalYear
