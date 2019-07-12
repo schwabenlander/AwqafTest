@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AwqafTest.Models
 {
-    public partial class Vouchers
+    public partial class Voucher
     {
         public int VoucherId { get; set; }
         public DateTime? VoucherDate { get; set; }
@@ -16,6 +16,6 @@ namespace AwqafTest.Models
         public DateTime? SystemDate { get; set; }
         public int? UserId { get; set; }
 
-        public virtual AccountsLedgers AccountsLedgers { get; set; }
+        public virtual AccountsLedger AccountsLedger { get; set; }
     }
 }

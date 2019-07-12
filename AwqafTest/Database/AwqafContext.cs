@@ -14,10 +14,10 @@ namespace AwqafTest.Database
         {
         }
 
-        public virtual DbSet<Accounts> Accounts { get; set; }
-        public virtual DbSet<AccountsLedgers> AccountsLedgers { get; set; }
-        public virtual DbSet<FiscalYears> FiscalYears { get; set; }
-        public virtual DbSet<Vouchers> Vouchers { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<AccountsLedger> AccountsLedgers { get; set; }
+        public virtual DbSet<FiscalYear> FiscalYears { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,7 +31,7 @@ namespace AwqafTest.Database
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
-            modelBuilder.Entity<Accounts>(entity =>
+            modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.AccountId)
                     .HasName("PK__ACCOUNTS__05B22F6020C446FE");
@@ -42,7 +42,7 @@ namespace AwqafTest.Database
                     .HasColumnName("ACCOUNT_ID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Account)
+                entity.Property(e => e.AccountNumber)
                     .IsRequired()
                     .HasColumnName("ACCOUNT")
                     .HasMaxLength(100);
@@ -67,7 +67,7 @@ namespace AwqafTest.Database
                 entity.Property(e => e.UserId).HasColumnName("USER_ID");
             });
 
-            modelBuilder.Entity<AccountsLedgers>(entity =>
+            modelBuilder.Entity<AccountsLedger>(entity =>
             {
                 entity.HasKey(e => new { e.FiscalYearId, e.AccountId, e.LedgerNo })
                     .HasName("PK__ACCOUNTS__59EC7E4636F137B9");
@@ -109,7 +109,7 @@ namespace AwqafTest.Database
                     .HasConstraintName("FK1_ACCOUNTS_LEDGERS");
             });
 
-            modelBuilder.Entity<FiscalYears>(entity =>
+            modelBuilder.Entity<FiscalYear>(entity =>
             {
                 entity.HasKey(e => e.FiscalYearId)
                     .HasName("PK__FISCAL_Y__EBDB2745FA8F48D4");
@@ -140,7 +140,7 @@ namespace AwqafTest.Database
                     .HasMaxLength(4);
             });
 
-            modelBuilder.Entity<Vouchers>(entity =>
+            modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.VoucherId)
                     .HasName("PK__VOUCHERS__60E7A0B33B050293");
@@ -181,7 +181,7 @@ namespace AwqafTest.Database
                     .HasColumnType("money")
                     .HasDefaultValueSql("((0))");
 
-                entity.HasOne(d => d.AccountsLedgers)
+                entity.HasOne(d => d.AccountsLedger)
                     .WithMany(p => p.Vouchers)
                     .HasForeignKey(d => new { d.FiscalYearId, d.AccountId, d.LedgerNo })
                     .OnDelete(DeleteBehavior.ClientSetNull)

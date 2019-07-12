@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace AwqafTest.Models
 {
-    public partial class AccountsLedgers
+    public partial class AccountsLedger
     {
-        public AccountsLedgers()
+        public AccountsLedger()
         {
-            Vouchers = new HashSet<Vouchers>();
+            Vouchers = new HashSet<Voucher>();
         }
 
         public byte FiscalYearId { get; set; }
@@ -18,8 +18,8 @@ namespace AwqafTest.Models
         public int? UserId { get; set; }
         public string Remarks { get; set; }
 
-        public virtual Accounts Account { get; set; }
-        public virtual FiscalYears FiscalYear { get; set; }
-        public virtual ICollection<Vouchers> Vouchers { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual FiscalYear FiscalYear { get; set; }
+        public virtual ICollection<Voucher> Vouchers { get; set; }
     }
 }

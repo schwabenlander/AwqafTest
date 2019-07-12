@@ -54,15 +54,15 @@ namespace AwqafTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYears fiscalYears)
+        public async Task<IActionResult> Create([Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYear fiscalYear)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(fiscalYears);
+                _context.Add(fiscalYear);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(fiscalYears);
+            return View(fiscalYear);
         }
 
         // GET: FiscalYears/Edit/5
@@ -86,9 +86,9 @@ namespace AwqafTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(byte id, [Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYears fiscalYears)
+        public async Task<IActionResult> Edit(byte id, [Bind("FiscalYearId,YearDescription,StartDate,EndDate,IsCurrent,IsOpen")] FiscalYear fiscalYear)
         {
-            if (id != fiscalYears.FiscalYearId)
+            if (id != fiscalYear.FiscalYearId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace AwqafTest.Controllers
             {
                 try
                 {
-                    _context.Update(fiscalYears);
+                    _context.Update(fiscalYear);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FiscalYearsExists(fiscalYears.FiscalYearId))
+                    if (!FiscalYearsExists(fiscalYear.FiscalYearId))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace AwqafTest.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(fiscalYears);
+            return View(fiscalYear);
         }
 
         // GET: FiscalYears/Delete/5

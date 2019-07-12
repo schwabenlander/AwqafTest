@@ -7,13 +7,13 @@ namespace AwqafTest.Database
     public interface IAwqafDataService
     {
         // FISCAL_YEARS
-        IEnumerable<FiscalYears> GetFiscalYears();
-        FiscalYears GetFiscalYear(string year);
-        FiscalYears GetFiscalYearById(int id);
-        FiscalYears AddFiscalYear(FiscalYearViewModel newFiscalYear);
-        FiscalYears UpdateFiscalYear(FiscalYearViewModel updatedFiscalYear);
-        FiscalYears DeleteFiscalYear(int id);
-
+        IEnumerable<FiscalYear> GetFiscalYears();
+        FiscalYear GetFiscalYear(string year);
+        FiscalYear GetFiscalYearById(int id);
+        FiscalYear AddFiscalYear(FiscalYear newFiscalYear);
+        FiscalYear UpdateFiscalYear(FiscalYear updatedFiscalYear);
+        FiscalYear DeleteFiscalYear(int id);
+        int Commit();
 
         // ACCOUNTS
 

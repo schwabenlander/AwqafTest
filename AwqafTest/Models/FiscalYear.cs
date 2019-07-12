@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace AwqafTest.Models
 {
-    public partial class FiscalYears
+    public partial class FiscalYear
     {
-        public FiscalYears()
+        public FiscalYear()
         {
-            AccountsLedgers = new HashSet<AccountsLedgers>();
+            AccountsLedgers = new HashSet<AccountsLedger>();
         }
 
         public byte FiscalYearId { get; set; }
@@ -17,6 +17,6 @@ namespace AwqafTest.Models
         public byte? IsCurrent { get; set; }
         public byte? IsOpen { get; set; }
 
-        public virtual ICollection<AccountsLedgers> AccountsLedgers { get; set; }
+        public virtual ICollection<AccountsLedger> AccountsLedgers { get; set; }
     }
 }
