@@ -1,17 +1,23 @@
-﻿@model IEnumerable<AwqafTest.Models.AccountLedger>
+﻿@model IEnumerable<AwqafTest.Models.ViewModels.AccountLedgerViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Account Ledgers";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add New Ledger</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FiscalYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ledger)
             </th>
@@ -19,47 +25,30 @@
                 @Html.DisplayNameFor(model => model.SystemDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Remarks)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.UserId)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Account)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FiscalYear)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ledger)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SystemDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Remarks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Account.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FiscalYear.YearDescription)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiscalYear.YearDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ledger)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SystemDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

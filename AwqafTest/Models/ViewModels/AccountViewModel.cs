@@ -30,7 +30,7 @@ namespace AwqafTest.Models.ViewModels
         [Display(Name = "User ID"), Range(1, int.MaxValue)]
         public int? UserId { get; set; }
 
-        [HiddenInput, Display(Name = "System Date"), DataType(DataType.Date)]
+        [HiddenInput, Display(Name = "Date Created"), DataType(DataType.Date)]
         public DateTime? SystemDate { get; set; }
     }
 }

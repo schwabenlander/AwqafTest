@@ -23,7 +23,8 @@ namespace AwqafTest.Controllers
         // GET: Accounts
         public IActionResult Index()
         {
-            var accounts = _accountData.GetAccounts();
+            // TODO: Add paging of Accounts
+            var accounts = _accountData.GetAccounts().Take(100);
             var viewModel = new List<AccountViewModel>();
 
             foreach (var account in accounts)

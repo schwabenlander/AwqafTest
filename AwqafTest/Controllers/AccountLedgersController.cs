@@ -7,160 +7,77 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AwqafTest.Database;
 using AwqafTest.Models;
+using AwqafTest.Models.ViewModels;
 
 namespace AwqafTest.Controllers
 {
     public class AccountLedgersController : Controller
     {
-        private readonly AwqafContext _context;
+        private readonly IAccountLedgerDataService _accountLedgerData;
+        private readonly IAccountDataService _accountDataService;
+        private readonly IFiscalYearDataService _fiscalYearDataService;
 
-        public AccountLedgersController(AwqafContext context)
+        public AccountLedgersController(IAccountLedgerDataService accountLedgerData, 
+                                        IAccountDataService accountDataService, 
+                                        IFiscalYearDataService fiscalYearDataService)
         {
-            _context = context;
+            _accountLedgerData = accountLedgerData;
+            _accountDataService = accountDataService;
+            _fiscalYearDataService = fiscalYearDataService;
         }
 
         // GET: AccountLedgers
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var awqafContext = _context.AccountsLedgers.Include(a => a.Account).Include(a => a.FiscalYear);
-            return View(await awqafContext.ToListAsync());
-        }
+            // TODO: Add paging of Account Ledgers
+            var accountLedgers = _accountLedgerData.GetAccountLedgers().Take(100);
+            var viewModel = new List<AccountLedgerViewModel>();
 
-        // GET: AccountLedgers/Details/5
-        public async Task<IActionResult> Details(byte? id)
-        {
-            if (id == null)
+            foreach (var accountLedger in accountLedgers)
             {
-                return NotFound();
+                viewModel.Add(new AccountLedgerViewModel
+                {
+                    AccountId = accountLedger.AccountId,
+                    FiscalYearId = accountLedger.FiscalYearId,
+                    LedgerNo = accountLedger.LedgerNo,
+                    Ledger = accountLedger.Ledger,
+                    SystemDate = accountLedger.SystemDate,
+                    UserId = accountLedger.UserId,
+                    Remarks = accountLedger.Remarks,
+                    Account = accountLedger.Account,
+                    FiscalYear = accountLedger.FiscalYear
+                });
             }
 
-            var accountLedger = await _context.AccountsLedgers
-                .Include(a => a.Account)
-                .Include(a => a.FiscalYear)
-                .FirstOrDefaultAsync(m => m.FiscalYearId == id);
-            if (accountLedger == null)
-            {
-                return NotFound();
-            }
-
-            return View(accountLedger);
+            return View(viewModel);
         }
 
         // GET: AccountLedgers/Create
         public IActionResult Create()
         {
-            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber");
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription");
-            return View();
+            throw new NotImplementedException();
+
+//            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber");
+//            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription");
+//            return View();
         }
 
         // POST: AccountLedgers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FiscalYearId,AccountId,LedgerNo,Ledger,SystemDate,Remarks,UserId")] AccountLedger accountLedger)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(accountLedger);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber", accountLedger.AccountId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
-            return View(accountLedger);
-        }
+            throw new NotImplementedException();
 
-        // GET: AccountLedgers/Edit/5
-        public async Task<IActionResult> Edit(byte? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var accountLedger = await _context.AccountsLedgers.FindAsync(id);
-            if (accountLedger == null)
-            {
-                return NotFound();
-            }
-            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber", accountLedger.AccountId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
-            return View(accountLedger);
-        }
-
-        // POST: AccountLedgers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(byte id, [Bind("FiscalYearId,AccountId,LedgerNo,Ledger,SystemDate,Remarks,UserId")] AccountLedger accountLedger)
-        {
-            if (id != accountLedger.FiscalYearId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(accountLedger);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountLedgerExists(accountLedger.FiscalYearId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber", accountLedger.AccountId);
-            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
-            return View(accountLedger);
-        }
-
-        // GET: AccountLedgers/Delete/5
-        public async Task<IActionResult> Delete(byte? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var accountLedger = await _context.AccountsLedgers
-                .Include(a => a.Account)
-                .Include(a => a.FiscalYear)
-                .FirstOrDefaultAsync(m => m.FiscalYearId == id);
-            if (accountLedger == null)
-            {
-                return NotFound();
-            }
-
-            return View(accountLedger);
-        }
-
-        // POST: AccountLedgers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(byte id)
-        {
-            var accountLedger = await _context.AccountsLedgers.FindAsync(id);
-            _context.AccountsLedgers.Remove(accountLedger);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool AccountLedgerExists(byte id)
-        {
-            return _context.AccountsLedgers.Any(e => e.FiscalYearId == id);
+//            if (ModelState.IsValid)
+//            {
+//                _context.Add(accountLedger);
+//                await _context.SaveChangesAsync();
+//                return RedirectToAction(nameof(Index));
+//            }
+//            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber", accountLedger.AccountId);
+//            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
+//            return View(accountLedger);
         }
     }
 }

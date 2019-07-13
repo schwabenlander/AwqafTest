@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AwqafTest.Models.ViewModels
 {
@@ -22,5 +23,14 @@ namespace AwqafTest.Models.ViewModels
 
         [Display(Name = "User ID"), Range(1, int.MaxValue)]
         public int? UserId { get; set; }
+
+        [HiddenInput, Display(Name = "Date Created"), DataType(DataType.Date)]
+        public DateTime? SystemDate { get; set; }
+
+        [Display(Name = "Account")]
+        public Account Account { get; set; }
+
+        [Display(Name = "Fiscal Year")]
+        public FiscalYear FiscalYear { get; set; }
     }
 }

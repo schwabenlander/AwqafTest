@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AwqafTest.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AwqafTest.Database
 {
@@ -16,6 +17,8 @@ namespace AwqafTest.Database
         public IEnumerable<AccountLedger> GetAccountLedgers()
         {
             return _database.AccountsLedgers
+                .Include(a => a.Account)
+                .Include(a => a.FiscalYear)
                 .OrderBy(a => a.FiscalYearId)
                 .ThenBy(a => a.AccountId)
                 .ThenBy(a => a.LedgerNo);
@@ -24,6 +27,8 @@ namespace AwqafTest.Database
         public AccountLedger GetAccountLedger(byte fiscalYearId, int accountId, int ledgerNo)
         {
             return _database.AccountsLedgers
+                .Include(a => a.Account)
+                .Include(a => a.FiscalYear)
                 .SingleOrDefault(a => a.FiscalYearId == fiscalYearId &&
                                       a.AccountId == accountId &&
                                       a.LedgerNo == ledgerNo);
