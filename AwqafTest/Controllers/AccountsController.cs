@@ -53,12 +53,14 @@ namespace AwqafTest.Controllers
         }
 
         // POST: Accounts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(AccountViewModel viewModel)
         {
+            // Check to see if FISCAL_YEAR_ID already exists
+            if (_accountData.GetAccountById(viewModel.AccountId) != null)
+                ModelState.AddModelError("AccountId", $"Account ID ({viewModel.AccountId}) already exists.");
+
             if (ModelState.IsValid)
             {
                 var account = new Account
