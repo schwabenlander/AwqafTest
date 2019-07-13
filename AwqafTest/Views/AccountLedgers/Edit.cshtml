@@ -1,0 +1,51 @@
+﻿@model AwqafTest.Models.AccountLedger
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>AccountLedger</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FiscalYearId" />
+            <input type="hidden" asp-for="AccountId" />
+            <input type="hidden" asp-for="LedgerNo" />
+            <div class="form-group">
+                <label asp-for="Ledger" class="control-label"></label>
+                <input asp-for="Ledger" class="form-control" />
+                <span asp-validation-for="Ledger" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemDate" class="control-label"></label>
+                <input asp-for="SystemDate" class="form-control" />
+                <span asp-validation-for="SystemDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -39,6 +39,7 @@ namespace AwqafTest
 
             services.AddScoped<IFiscalYearDataService, FiscalYearSqlDataService>();
             services.AddScoped<IAccountDataService, AccountDataService>();
+            services.AddScoped<IAccountLedgerDataService, AccountLedgerDataService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
