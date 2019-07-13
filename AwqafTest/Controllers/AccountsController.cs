@@ -36,7 +36,8 @@ namespace AwqafTest.Controllers
                     Level2 = account.Level2,
                     Level3 = account.Level3,
                     Level4 = account.Level4,
-                    UserId = account.UserId
+                    UserId = account.UserId,
+                    SystemDate = account.SystemDate
                 });
             }
 
@@ -54,9 +55,29 @@ namespace AwqafTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("AccountId,AccountNumber,Level1,Level2,Level3,Level4,SystemDate,Remarks,UserId")] Account account)
+        public IActionResult Create(AccountViewModel viewModel)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                var account = new Account
+                {
+                    AccountId = viewModel.AccountId,
+                    AccountNumber = viewModel.AccountNumber,
+                    Level1 = viewModel.Level1,
+                    Level2 = viewModel.Level2,
+                    Level3 = viewModel.Level3,
+                    Level4 = viewModel.Level4,
+                    Remarks = viewModel.Remarks,
+                    UserId = viewModel.UserId
+                };
+
+                _accountData.AddAccount(account);
+                _accountData.Save();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(viewModel);
         }
     }
 }

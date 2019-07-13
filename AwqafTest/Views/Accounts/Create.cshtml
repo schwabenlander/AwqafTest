@@ -1,12 +1,12 @@
-﻿@model AwqafTest.Models.Account
+﻿@model AwqafTest.Models.ViewModels.AccountViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Account";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Account</h4>
+<h4>Please complete the form below: </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -60,7 +60,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">&lt; Back to List</a>
 </div>
 
 @section Scripts {

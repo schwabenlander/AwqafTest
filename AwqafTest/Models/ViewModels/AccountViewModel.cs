@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AwqafTest.Models.ViewModels
 {
@@ -23,10 +24,13 @@ namespace AwqafTest.Models.ViewModels
         [Required, Display(Name = "Level 4"), Range(0, short.MaxValue)]
         public short Level4 { get; set; }
 
-        [Display(Name = "Remarks"), StringLength(300)]
+        [Display(Name = "Remarks"), StringLength(300), DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
         [Display(Name = "User ID"), Range(1, int.MaxValue)]
         public int? UserId { get; set; }
+
+        [HiddenInput, Display(Name = "System Date"), DataType(DataType.Date)]
+        public DateTime? SystemDate { get; set; }
     }
 }
