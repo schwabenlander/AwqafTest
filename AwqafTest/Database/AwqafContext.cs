@@ -11,7 +11,7 @@ namespace AwqafTest.Database
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<AccountsLedger> AccountsLedgers { get; set; }
+        public virtual DbSet<AccountLedger> AccountsLedgers { get; set; }
         public virtual DbSet<FiscalYear> FiscalYears { get; set; }
         public virtual DbSet<Voucher> Vouchers { get; set; }
 
@@ -55,7 +55,7 @@ namespace AwqafTest.Database
                 entity.Property(e => e.UserId).HasColumnName("USER_ID");
             });
 
-            modelBuilder.Entity<AccountsLedger>(entity =>
+            modelBuilder.Entity<AccountLedger>(entity =>
             {
                 entity.HasKey(e => new { e.FiscalYearId, e.AccountId, e.LedgerNo })
                     .HasName("PK__ACCOUNTS__59EC7E4636F137B9");
@@ -169,7 +169,7 @@ namespace AwqafTest.Database
                     .HasColumnType("money")
                     .HasDefaultValueSql("((0))");
 
-                entity.HasOne(d => d.AccountsLedger)
+                entity.HasOne(d => d.AccountLedger)
                     .WithMany(p => p.Vouchers)
                     .HasForeignKey(d => new { d.FiscalYearId, d.AccountId, d.LedgerNo })
                     .OnDelete(DeleteBehavior.ClientSetNull)

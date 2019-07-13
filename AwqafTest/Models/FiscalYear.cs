@@ -9,7 +9,7 @@ namespace AwqafTest.Models
     {
         public FiscalYear()
         {
-            AccountsLedgers = new HashSet<AccountsLedger>();
+            AccountsLedgers = new HashSet<AccountLedger>();
         }
 
         public byte FiscalYearId { get; set; }
@@ -19,6 +19,6 @@ namespace AwqafTest.Models
         public byte? IsCurrent { get; set; }
         public byte? IsOpen { get; set; }
 
-        public virtual ICollection<AccountsLedger> AccountsLedgers { get; set; }
+        public virtual ICollection<AccountLedger> AccountsLedgers { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace AwqafTest.Models
         public DateTime? SystemDate { get; set; }
         public int? UserId { get; set; }
 
-        public virtual AccountsLedger AccountsLedger { get; set; }
+        public virtual AccountLedger AccountLedger { get; set; }
     }
 }

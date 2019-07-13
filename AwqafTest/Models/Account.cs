@@ -7,7 +7,7 @@ namespace AwqafTest.Models
     {
         public Account()
         {
-            AccountsLedgers = new HashSet<AccountsLedger>();
+            AccountsLedgers = new HashSet<AccountLedger>();
         }
 
         public int AccountId { get; set; }
@@ -20,6 +20,6 @@ namespace AwqafTest.Models
         public string Remarks { get; set; }
         public int? UserId { get; set; }
 
-        public virtual ICollection<AccountsLedger> AccountsLedgers { get; set; }
+        public virtual ICollection<AccountLedger> AccountsLedgers { get; set; }
     }
 }

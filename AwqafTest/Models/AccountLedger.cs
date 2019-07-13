@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AwqafTest.Models
 {
-    public partial class AccountsLedger
+    public partial class AccountLedger
     {
-        public AccountsLedger()
+        public AccountLedger()
         {
             Vouchers = new HashSet<Voucher>();
         }
@@ -15,8 +15,8 @@ namespace AwqafTest.Models
         public int LedgerNo { get; set; }
         public string Ledger { get; set; }
         public DateTime? SystemDate { get; set; }
-        public int? UserId { get; set; }
         public string Remarks { get; set; }
+        public int? UserId { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual FiscalYear FiscalYear { get; set; }
