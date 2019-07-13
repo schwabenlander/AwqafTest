@@ -14,16 +14,16 @@ namespace AwqafTest.Controllers
     public class AccountLedgersController : Controller
     {
         private readonly IAccountLedgerDataService _accountLedgerData;
-        private readonly IAccountDataService _accountDataService;
-        private readonly IFiscalYearDataService _fiscalYearDataService;
+        private readonly IAccountDataService _accountData;
+        private readonly IFiscalYearDataService _fiscalYearData;
 
         public AccountLedgersController(IAccountLedgerDataService accountLedgerData, 
-                                        IAccountDataService accountDataService, 
-                                        IFiscalYearDataService fiscalYearDataService)
+                                        IAccountDataService accountData, 
+                                        IFiscalYearDataService fiscalYearData)
         {
             _accountLedgerData = accountLedgerData;
-            _accountDataService = accountDataService;
-            _fiscalYearDataService = fiscalYearDataService;
+            _accountData = accountData;
+            _fiscalYearData = fiscalYearData;
         }
 
         // GET: AccountLedgers
@@ -55,7 +55,7 @@ namespace AwqafTest.Controllers
         // GET: AccountLedgers/Create
         public IActionResult Create()
         {
-            ViewData["FiscalYearId"] = new SelectList(_fiscalYearDataService.GetFiscalYears(), "FiscalYearId", "YearDescription");
+            ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription");
 
             return View();
         }
@@ -65,20 +65,44 @@ namespace AwqafTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(AccountLedgerViewModel viewModel)
         {
-            throw new NotImplementedException();
+            // Check for valid FiscalYearId
+            if (_fiscalYearData.GetFiscalYearById(viewModel.FiscalYearId) == null)
+                ModelState.AddModelError("FiscalYearId", $"Fiscal Year does not exist.");
 
-            // Ensure the FiscalYearId provided already exists
+            // Check for valid AccountId
+            if (_accountData.GetAccountById(viewModel.AccountId) == null)
+                ModelState.AddModelError("AccountId", $"Account ID does not exist.");
 
-            // Ensure The AccountId provided already exists
+            if (ModelState.IsValid)
+            {
+                var accountLedger = new AccountLedger
+                {
+                    FiscalYearId = viewModel.FiscalYearId,
+                    AccountId = viewModel.AccountId,
+                    LedgerNo = viewModel.LedgerNo,
+                    Ledger = viewModel.Ledger,
+                    UserId = viewModel.UserId,
+                    Remarks = viewModel.Remarks
+                };
 
-//            if (ModelState.IsValid)
-//            {
-//                _context.Add(accountLedger);
-//                await _context.SaveChangesAsync();
-//                return RedirectToAction(nameof(Index));
-//            }
-//            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
-//            return View(accountLedger);
+                try
+                {
+                    _accountLedgerData.AddAccountLedger(accountLedger);
+                    _accountLedgerData.Save();
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
+                    // TODO: Log this exception
+                    ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription", viewModel.FiscalYearId);
+                    return View(viewModel);
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription", viewModel.FiscalYearId);
+            return View(viewModel);
         }
     }
 }

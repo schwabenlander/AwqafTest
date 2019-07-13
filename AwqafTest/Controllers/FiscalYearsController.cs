@@ -77,9 +77,18 @@ namespace AwqafTest.Controllers
                     IsOpen = viewModel.IsOpen ? (byte)1 : (byte)0,
                 };
 
-                _fiscalYearData.AddFiscalYear(fiscalYear);
-                _fiscalYearData.Save();
-
+                try
+                {
+                    _fiscalYearData.AddFiscalYear(fiscalYear);
+                    _fiscalYearData.Save();
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
+                    // TODO: Log this exception
+                    return View(viewModel);
+                }
+                
                 return RedirectToAction(nameof(Index));
             }
 

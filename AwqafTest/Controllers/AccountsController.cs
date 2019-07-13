@@ -76,9 +76,19 @@ namespace AwqafTest.Controllers
                     UserId = viewModel.UserId
                 };
 
-                _accountData.AddAccount(account);
-                _accountData.Save();
-
+                try
+                {
+                    _accountData.AddAccount(account);
+                    _accountData.Save();
+                }
+                catch (Exception e)
+                {
+                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
+                    // TODO: Log this exception
+                    ViewData["NextId"] = viewModel.AccountId;
+                    return View(viewModel);
+                }
+                
                 return RedirectToAction(nameof(Index));
             }
 

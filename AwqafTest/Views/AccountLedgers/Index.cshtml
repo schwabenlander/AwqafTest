@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.Account)
             </th>
             <th>
+                Ledger #
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Ledger)
             </th>
             <th>
@@ -32,23 +35,26 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FiscalYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Account)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ledger)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SystemDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FiscalYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LedgerNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ledger)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SystemDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+        </tr>
         }
     </tbody>
 </table>

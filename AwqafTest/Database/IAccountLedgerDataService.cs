@@ -7,7 +7,7 @@ namespace AwqafTest.Database
     {
         IEnumerable<AccountLedger> GetAccountLedgers();
         AccountLedger GetAccountLedger(byte fiscalYearId, int accountId, int ledgerNo);
-        AccountLedger AddAccount(AccountLedger newAccountLedger);
+        AccountLedger AddAccountLedger(AccountLedger newAccountLedger);
         int Save();
     }
 }

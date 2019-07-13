@@ -34,7 +34,7 @@ namespace AwqafTest.Database
                                       a.LedgerNo == ledgerNo);
         }
 
-        public AccountLedger AddAccount(AccountLedger newAccountLedger)
+        public AccountLedger AddAccountLedger(AccountLedger newAccountLedger)
         {
             _database.AccountsLedgers.Add(newAccountLedger);
 
