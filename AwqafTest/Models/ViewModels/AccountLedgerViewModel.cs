@@ -28,9 +28,9 @@ namespace AwqafTest.Models.ViewModels
         public DateTime? SystemDate { get; set; }
 
         [Display(Name = "Account")]
-        public Account Account { get; set; }
+        public string Account { get; set; }
 
         [Display(Name = "Fiscal Year")]
-        public FiscalYear FiscalYear { get; set; }
+        public string FiscalYear { get; set; }
     }
 }

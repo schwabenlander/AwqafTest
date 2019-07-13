@@ -1,12 +1,12 @@
-﻿@model AwqafTest.Models.AccountLedger
+﻿@model AwqafTest.Models.ViewModels.AccountLedgerViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Ledger";
 }
 
-<h1>Create</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>AccountLedger</h4>
+<h4>Please complete the form below: </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,11 +14,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FiscalYearId" class="control-label"></label>
-                <select asp-for="FiscalYearId" class ="form-control" asp-items="ViewBag.FiscalYearId"></select>
+                <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.FiscalYearId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AccountId" class="control-label"></label>
-                <select asp-for="AccountId" class ="form-control" asp-items="ViewBag.AccountId"></select>
+                <input asp-for="AccountId" class="form-control" />
+                <span asp-validation-for="AccountId" class="text-danger"></span>
+                @* TODO: Add lookup dialog for accounts *@
             </div>
             <div class="form-group">
                 <label asp-for="LedgerNo" class="control-label"></label>
@@ -32,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Remarks" class="control-label"></label>
-                <input asp-for="Remarks" class="form-control" />
+                <textarea asp-for="Remarks" class="form-control"></textarea>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -41,14 +43,14 @@
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Add" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">&lt; Back to List</a>
 </div>
 
 @section Scripts {

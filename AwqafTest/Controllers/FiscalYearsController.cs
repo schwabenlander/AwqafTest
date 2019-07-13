@@ -47,7 +47,7 @@ namespace AwqafTest.Controllers
         public IActionResult Create()
         {
             // Set NextId to the current maximum value of FISCAL_YEAR_ID + 1
-            TempData["NextId"] = _fiscalYearData.GetMaxFiscalYearId() + 1;
+            ViewData["NextId"] = _fiscalYearData.GetMaxFiscalYearId() + 1;
 
             return View();
         }
@@ -59,7 +59,7 @@ namespace AwqafTest.Controllers
         {
             // Check to see if FISCAL_YEAR_ID already exists
             if (_fiscalYearData.GetFiscalYearById(viewModel.FiscalYearId) != null)
-                ModelState.AddModelError("FiscalYearId", $"Fiscal Year ID ({viewModel.FiscalYearId}) already exists.");
+                ModelState.AddModelError("FiscalYearId", $"Fiscal Year ID already exists.");
 
             // Check to see if EndDate is after StartDate
             if (viewModel.StartDate >= viewModel.EndDate)
@@ -83,6 +83,7 @@ namespace AwqafTest.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            ViewData["NextId"] = viewModel.FiscalYearId;
             return View(viewModel);
         }
     }

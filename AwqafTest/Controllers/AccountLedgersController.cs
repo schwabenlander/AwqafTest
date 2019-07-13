@@ -44,8 +44,8 @@ namespace AwqafTest.Controllers
                     SystemDate = accountLedger.SystemDate,
                     UserId = accountLedger.UserId,
                     Remarks = accountLedger.Remarks,
-                    Account = accountLedger.Account,
-                    FiscalYear = accountLedger.FiscalYear
+                    Account = accountLedger.Account.AccountNumber,
+                    FiscalYear = accountLedger.FiscalYear.YearDescription
                 });
             }
 
@@ -55,19 +55,21 @@ namespace AwqafTest.Controllers
         // GET: AccountLedgers/Create
         public IActionResult Create()
         {
-            throw new NotImplementedException();
+            ViewData["FiscalYearId"] = new SelectList(_fiscalYearDataService.GetFiscalYears(), "FiscalYearId", "YearDescription");
 
-//            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber");
-//            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription");
-//            return View();
+            return View();
         }
 
         // POST: AccountLedgers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FiscalYearId,AccountId,LedgerNo,Ledger,SystemDate,Remarks,UserId")] AccountLedger accountLedger)
+        public IActionResult Create(AccountLedgerViewModel viewModel)
         {
             throw new NotImplementedException();
+
+            // Ensure the FiscalYearId provided already exists
+
+            // Ensure The AccountId provided already exists
 
 //            if (ModelState.IsValid)
 //            {
@@ -75,7 +77,6 @@ namespace AwqafTest.Controllers
 //                await _context.SaveChangesAsync();
 //                return RedirectToAction(nameof(Index));
 //            }
-//            ViewData["AccountId"] = new SelectList(_context.Accounts, "AccountId", "AccountNumber", accountLedger.AccountId);
 //            ViewData["FiscalYearId"] = new SelectList(_context.FiscalYears, "FiscalYearId", "YearDescription", accountLedger.FiscalYearId);
 //            return View(accountLedger);
         }

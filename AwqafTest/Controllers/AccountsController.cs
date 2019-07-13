@@ -48,7 +48,7 @@ namespace AwqafTest.Controllers
         // GET: Accounts/Create
         public IActionResult Create()
         {
-            TempData["NextId"] = _accountData.GetMaxAccountId() + 1;
+            ViewData["NextId"] = _accountData.GetMaxAccountId() + 1;
 
             return View();
         }
@@ -58,9 +58,9 @@ namespace AwqafTest.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(AccountViewModel viewModel)
         {
-            // Check to see if FISCAL_YEAR_ID already exists
+            // Check to see if ACCOUNT_ID already exists
             if (_accountData.GetAccountById(viewModel.AccountId) != null)
-                ModelState.AddModelError("AccountId", $"Account ID ({viewModel.AccountId}) already exists.");
+                ModelState.AddModelError("AccountId", $"Account ID already exists.");
 
             if (ModelState.IsValid)
             {
@@ -81,6 +81,8 @@ namespace AwqafTest.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["NextId"] = viewModel.AccountId;
 
             return View(viewModel);
         }
