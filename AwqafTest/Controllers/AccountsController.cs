@@ -47,6 +47,8 @@ namespace AwqafTest.Controllers
         // GET: Accounts/Create
         public IActionResult Create()
         {
+            TempData["NextId"] = _accountData.GetMaxAccountId() + 1;
+
             return View();
         }
 
