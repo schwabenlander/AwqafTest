@@ -13,17 +13,17 @@ namespace AwqafTest.Controllers
 {
     public class FiscalYearsController : Controller
     {
-        private readonly IAwqafDataService _awqafData;
+        private readonly IFiscalYearDataService _fiscalYearData;
 
-        public FiscalYearsController(IAwqafDataService awqafData)
+        public FiscalYearsController(IFiscalYearDataService fiscalYearData)
         {
-            _awqafData = awqafData;
+            _fiscalYearData = fiscalYearData;
         }
 
         // GET: FiscalYears
         public IActionResult Index()
         {
-            var fiscalYears = _awqafData.GetFiscalYears();
+            var fiscalYears = _fiscalYearData.GetFiscalYears();
 
             var viewModel = new List<FiscalYearViewModel>();
 
@@ -47,7 +47,7 @@ namespace AwqafTest.Controllers
         public IActionResult Create()
         {
             // Set NextId to the current maximum value of FISCAL_YEAR_ID + 1
-            TempData["NextId"] = _awqafData.GetMaxFiscalYearId() + 1;
+            TempData["NextId"] = _fiscalYearData.GetMaxFiscalYearId() + 1;
 
             return View();
         }
@@ -60,7 +60,7 @@ namespace AwqafTest.Controllers
         public IActionResult Create(FiscalYearViewModel viewModel)
         {
             // Check to see if FISCAL_YEAR_ID already exists
-            if (_awqafData.GetFiscalYearById(viewModel.FiscalYearId) != null)
+            if (_fiscalYearData.GetFiscalYearById(viewModel.FiscalYearId) != null)
                 ModelState.AddModelError("FiscalYearId", "Specified ID already exists.");
 
             // Check to see if EndDate is after StartDate
@@ -79,8 +79,8 @@ namespace AwqafTest.Controllers
                     IsOpen = viewModel.IsOpen ? (byte)1 : (byte)0,
                 };
 
-                _awqafData.AddFiscalYear(fiscalYear);
-                _awqafData.Save();
+                _fiscalYearData.AddFiscalYear(fiscalYear);
+                _fiscalYearData.Save();
 
                 return RedirectToAction(nameof(Index));
             }

@@ -1,0 +1,69 @@
+﻿@model AwqafTest.Models.Account
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Account</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AccountId" />
+            <div class="form-group">
+                <label asp-for="AccountNumber" class="control-label"></label>
+                <input asp-for="AccountNumber" class="form-control" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level1" class="control-label"></label>
+                <input asp-for="Level1" class="form-control" />
+                <span asp-validation-for="Level1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level2" class="control-label"></label>
+                <input asp-for="Level2" class="form-control" />
+                <span asp-validation-for="Level2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level3" class="control-label"></label>
+                <input asp-for="Level3" class="form-control" />
+                <span asp-validation-for="Level3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Level4" class="control-label"></label>
+                <input asp-for="Level4" class="form-control" />
+                <span asp-validation-for="Level4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemDate" class="control-label"></label>
+                <input asp-for="SystemDate" class="form-control" />
+                <span asp-validation-for="SystemDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Remarks" class="control-label"></label>
+                <input asp-for="Remarks" class="form-control" />
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

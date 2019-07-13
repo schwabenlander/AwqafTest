@@ -4,20 +4,13 @@ using AwqafTest.Models.ViewModels;
 
 namespace AwqafTest.Database
 {
-    public interface IAwqafDataService
+    public interface IFiscalYearDataService
     {
-        // FISCAL_YEARS
         IEnumerable<FiscalYear> GetFiscalYears();
         FiscalYear GetFiscalYear(string year);
         FiscalYear GetFiscalYearById(byte id);
         FiscalYear AddFiscalYear(FiscalYear newFiscalYear);
         byte GetMaxFiscalYearId();
         int Save();
-
-        // ACCOUNTS
-
-        // ACCOUNTS_LEDGERS
-
-        // VOUCHERS
     }
 }

@@ -37,7 +37,7 @@ namespace AwqafTest
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<IAwqafDataService, AwqafSqlDataService>();
+            services.AddScoped<IFiscalYearDataService, FiscalYearSqlDataService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

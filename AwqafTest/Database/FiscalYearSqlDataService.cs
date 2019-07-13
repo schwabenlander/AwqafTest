@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AwqafTest.Database
 {
-    public class AwqafSqlDataService : IAwqafDataService
+    public class FiscalYearSqlDataService : IFiscalYearDataService
     {
         private readonly AwqafContext _database;
 
-        public AwqafSqlDataService(AwqafContext database)
+        public FiscalYearSqlDataService(AwqafContext database)
         {
             _database = database;
         }
