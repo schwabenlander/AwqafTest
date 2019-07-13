@@ -17,8 +17,8 @@ namespace AwqafTest.Models
         public short Level3 { get; set; }
         public short Level4 { get; set; }
         public DateTime? SystemDate { get; set; }
-        public int? UserId { get; set; }
         public string Remarks { get; set; }
+        public int? UserId { get; set; }
 
         public virtual ICollection<AccountsLedger> AccountsLedgers { get; set; }
     }
