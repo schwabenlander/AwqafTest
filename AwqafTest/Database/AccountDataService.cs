@@ -30,7 +30,7 @@ namespace AwqafTest.Database
 
         public int GetMaxAccountId()
         {
-            return _database.Accounts.Max(a => a.AccountId);
+            return _database.Accounts.Any() ? _database.Accounts.Max(a => a.AccountId) : 0;
         }
 
         public Account AddAccount(Account newAccount)
