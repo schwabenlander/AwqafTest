@@ -60,9 +60,9 @@ namespace AwqafTest.Controllers
         // GET: Vouchers/Create
         public IActionResult Create()
         {
-            throw new NotImplementedException();
-//            ViewData["FiscalYearId"] = new SelectList(_context.AccountsLedgers, "FiscalYearId", "Ledger");
-//            return View();
+            ViewData["NextId"] = _voucherData.GetMaxVoucherId() + 1;
+            ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription");
+            return View();
         }
 
         // POST: Vouchers/Create
@@ -115,7 +115,8 @@ namespace AwqafTest.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            
+
+            ViewData["NextId"] = _voucherData.GetMaxVoucherId() + 1;
             ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription", viewModel.FiscalYearId);
             return View(viewModel);
         }
