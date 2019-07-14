@@ -1,44 +1,38 @@
-﻿@model IEnumerable<AwqafTest.Models.Voucher>
+﻿@model IEnumerable<AwqafTest.Models.ViewModels.VoucherViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Vouchers";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add New Voucher</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.VoucherDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VoucherStatusId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VoucherTotal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Remarks)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SystemDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccountLedger)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherStatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VoucherTotal)
+        </th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoucherId)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VoucherDate)
             </td>
@@ -48,24 +42,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.VoucherTotal)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Remarks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SystemDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountLedger.Ledger)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VoucherId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VoucherId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VoucherId">Delete</a>
-            </td>
         </tr>
-}
+        }
     </tbody>
 </table>

@@ -5,10 +5,10 @@ namespace AwqafTest.Models.ViewModels
 {
     public class FiscalYearViewModel
     {
-        [Required(ErrorMessage = "The Fiscal Year ID field is required."), Display(Name = "ID"), Range(1, Byte.MaxValue)]
+        [Required, Display(Name = "Fiscal Year ID"), Range(1, Byte.MaxValue)]
         public byte FiscalYearId { get; set; }
 
-        [Required(ErrorMessage = "The Year Description field is required."), StringLength(4, MinimumLength = 4), Display(Name = "Year")]
+        [Required, StringLength(4, MinimumLength = 4), Display(Name = "Year")]
         public string YearDescription { get; set; }
 
         [Required, DataType(DataType.Date), Display(Name = "Start Date")]

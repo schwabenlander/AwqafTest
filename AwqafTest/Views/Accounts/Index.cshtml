@@ -13,19 +13,13 @@
     <thead>
     <tr>
         <th>
-            ID
+            @Html.DisplayNameFor(model => model.AccountId)
         </th>
         <th>
-            Account #
+            @Html.DisplayNameFor(model => model.AccountNumber)
         </th>
         <th>
             Levels 1-4
-        </th>
-        <th>
-            User ID
-        </th>
-        <th>
-            System Date
         </th>
     </tr>
     </thead>
@@ -43,12 +37,6 @@
             @Html.DisplayFor(modelItem => item.Level2) -
             @Html.DisplayFor(modelItem => item.Level3) -
             @Html.DisplayFor(modelItem => item.Level4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SystemDate)
         </td>
     </tr>
 }
