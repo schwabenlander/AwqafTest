@@ -1,12 +1,10 @@
-﻿@model AwqafTest.Models.Voucher
+﻿@model AwqafTest.Models.ViewModels.VoucherViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add New Voucher";
 }
 
-<h1>Create</h1>
-
-<h4>Voucher</h4>
+<h1>@ViewData["Title"]</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,15 +22,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="FiscalYearId" class="control-label"></label>
-                <select asp-for="FiscalYearId" class ="form-control" asp-items="ViewBag.FiscalYearId"></select>
+                <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.FiscalYearId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="AccountId" class="control-label"></label>
-                <select asp-for="AccountId" class ="form-control" asp-items="ViewBag.AccountId"></select>
+                <select asp-for="AccountId" class="form-control" asp-items="ViewBag.AccountId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="LedgerNo" class="control-label"></label>
-                <select asp-for="LedgerNo" class ="form-control" asp-items="ViewBag.LedgerNo"></select>
+                <select asp-for="LedgerNo" class="form-control" asp-items="ViewBag.LedgerNo"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Remarks" class="control-label"></label>
@@ -52,7 +50,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">&lt; Back to List</a>
 </div>
 
 @section Scripts {
