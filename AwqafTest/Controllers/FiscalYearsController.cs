@@ -84,8 +84,9 @@ namespace AwqafTest.Controllers
                 }
                 catch (Exception e)
                 {
-                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
                     // TODO: Log this exception
+                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
+                    
                     return View(viewModel);
                 }
                 

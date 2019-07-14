@@ -30,6 +30,7 @@ namespace AwqafTest.Controllers
         public IActionResult Index()
         {
             // TODO: Add paging of Account Ledgers
+            // Return only the first 100 results until paging can be implemented
             var accountLedgers = _accountLedgerData.GetAccountLedgers().Take(100);
             var viewModel = new List<AccountLedgerViewModel>();
 
@@ -92,8 +93,9 @@ namespace AwqafTest.Controllers
                 }
                 catch (Exception e)
                 {
-                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
                     // TODO: Log this exception
+                    ModelState.AddModelError(string.Empty, $"ERROR: Unable to save data. Please review your input and try again.");
+                    
                     ViewData["FiscalYearId"] = new SelectList(_fiscalYearData.GetFiscalYears(), "FiscalYearId", "YearDescription", viewModel.FiscalYearId);
                     return View(viewModel);
                 }
