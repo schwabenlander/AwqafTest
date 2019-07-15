@@ -6,9 +6,6 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Add New Ledger</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -29,20 +26,24 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FiscalYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Account)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LedgerNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ledger)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FiscalYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LedgerNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ledger)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i> Add New Account Ledger</a>
+</p>

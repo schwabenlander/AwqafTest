@@ -6,9 +6,6 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Add New Fiscal Year</a>
-</p>
 <table class="table">
     <thead>
     <tr>
@@ -48,12 +45,30 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsCurrent)
+            @if (item.IsCurrent)
+            {
+                <text>Yes</text>
+            }
+            else
+            {
+                <text>No</text>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsOpen)
+            @if (item.IsOpen)
+            {
+                <text>Yes</text>
+            }
+            else
+            {
+                <text>No</text>
+            }
         </td>
     </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i> Add New Fiscal Year</a>
+</p>

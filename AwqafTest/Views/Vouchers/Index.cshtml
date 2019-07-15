@@ -6,43 +6,45 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Add New Voucher</a>
-</p>
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Total Amount
-        </th>
-    </tr>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Total Amount
+            </th>
+        </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoucherId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoucherDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoucherStatusId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VoucherTotal)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherStatusId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VoucherTotal)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i> Add New Voucher</a>
+</p>
+
