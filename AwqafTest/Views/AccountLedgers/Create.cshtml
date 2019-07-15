@@ -12,32 +12,32 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FiscalYearId" class="control-label"></label>
+                <label asp-for="FiscalYearId"></label>
                 <select asp-for="FiscalYearId" class="form-control" asp-items="ViewBag.FiscalYearId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="AccountId" class="control-label"></label>
+                <label asp-for="AccountId"></label>
                 <input asp-for="AccountId" class="form-control" />
                 <span asp-validation-for="AccountId" class="text-danger"></span>
                 @* TODO: Add lookup dialog for accounts *@
             </div>
             <div class="form-group">
-                <label asp-for="LedgerNo" class="control-label"></label>
+                <label asp-for="LedgerNo"></label>
                 <input asp-for="LedgerNo" class="form-control" />
                 <span asp-validation-for="LedgerNo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Ledger" class="control-label"></label>
+                <label asp-for="Ledger"></label>
                 <input asp-for="Ledger" class="form-control" />
                 <span asp-validation-for="Ledger" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Remarks" class="control-label"></label>
+                <label asp-for="Remarks"></label>
                 <textarea asp-for="Remarks" class="form-control"></textarea>
                 <span asp-validation-for="Remarks" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
+                <label asp-for="UserId"></label>
                 <input asp-for="UserId" class="form-control" />
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
