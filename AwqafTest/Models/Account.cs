@@ -11,7 +11,7 @@ namespace AwqafTest.Models
         }
 
         public int AccountId { get; set; }
-        public string AccountNumber { get; set; }
+        public string AccountName { get; set; }
         public short Level1 { get; set; }
         public short Level2 { get; set; }
         public short Level3 { get; set; }

@@ -9,8 +9,8 @@ namespace AwqafTest.Models.ViewModels
         [Required, Display(Name = "Account ID"), Range(1, int.MaxValue)]
         public int AccountId { get; set; }
 
-        [Required, Display(Name = "Account Number"), StringLength(100)]
-        public string AccountNumber { get; set; }
+        [Required, Display(Name = "Account"), StringLength(100)]
+        public string AccountName { get; set; }
 
         [Required, Display(Name = "Level 1"), Range(0, short.MaxValue)]
         public short Level1 { get; set; }

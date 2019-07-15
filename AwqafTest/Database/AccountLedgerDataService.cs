@@ -7,9 +7,9 @@ namespace AwqafTest.Database
 {
     public class AccountLedgerDataService : IAccountLedgerDataService
     {
-        private readonly AwqafContext _database;
+        private readonly AwqafDatabase _database;
 
-        public AccountLedgerDataService(AwqafContext database)
+        public AccountLedgerDataService(AwqafDatabase database)
         {
             _database = database;
         }

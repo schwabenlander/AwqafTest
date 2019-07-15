@@ -44,7 +44,7 @@ namespace AwqafTest.Controllers
                     SystemDate = accountLedger.SystemDate,
                     UserId = accountLedger.UserId,
                     Remarks = accountLedger.Remarks,
-                    Account = accountLedger.Account.AccountNumber,
+                    Account = accountLedger.Account.AccountName,
                     FiscalYear = accountLedger.FiscalYear.YearDescription
                 });
             }

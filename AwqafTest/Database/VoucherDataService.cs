@@ -6,9 +6,9 @@ namespace AwqafTest.Database
 {
     public class VoucherDataService : IVoucherDataService
     {
-        private readonly AwqafContext _database;
+        private readonly AwqafDatabase _database;
 
-        public VoucherDataService(AwqafContext database)
+        public VoucherDataService(AwqafDatabase database)
         {
             _database = database;
         }

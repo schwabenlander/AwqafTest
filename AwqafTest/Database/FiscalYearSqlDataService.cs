@@ -8,9 +8,9 @@ namespace AwqafTest.Database
 {
     public class FiscalYearSqlDataService : IFiscalYearDataService
     {
-        private readonly AwqafContext _database;
+        private readonly AwqafDatabase _database;
 
-        public FiscalYearSqlDataService(AwqafContext database)
+        public FiscalYearSqlDataService(AwqafDatabase database)
         {
             _database = database;
         }

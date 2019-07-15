@@ -17,29 +17,32 @@
                 <span asp-validation-for="AccountId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AccountNumber"></label>
-                <input asp-for="AccountNumber" class="form-control" />
-                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                <label asp-for="AccountName"></label>
+                <input asp-for="AccountName" class="form-control" />
+                <span asp-validation-for="AccountName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Level1"></label>
-                <input asp-for="Level1" class="form-control" />
+            <div class="form-row">
+                <div class="form-group col">
+                    <label asp-for="Level1"></label>
+                    <input asp-for="Level1" class="form-control" />
+
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Level2"></label>
+                    <input asp-for="Level2" class="form-control" />
+                    <span asp-validation-for="Level2" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Level3"></label>
+                    <input asp-for="Level3" class="form-control" />
+                    <span asp-validation-for="Level3" class="text-danger"></span>
+                </div>
+                <div class="form-group col">
+                    <label asp-for="Level4"></label>
+                    <input asp-for="Level4" class="form-control" />
+                    <span asp-validation-for="Level4" class="text-danger"></span>
+                </div>
                 <span asp-validation-for="Level1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Level2"></label>
-                <input asp-for="Level2" class="form-control" />
-                <span asp-validation-for="Level2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Level3"></label>
-                <input asp-for="Level3" class="form-control" />
-                <span asp-validation-for="Level3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Level4"></label>
-                <input asp-for="Level4" class="form-control" />
-                <span asp-validation-for="Level4" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Remarks"></label>

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AwqafTest.Database
 {
-    public partial class AwqafContext : DbContext
+    public partial class AwqafDatabase : DbContext
     {
-        public AwqafContext(DbContextOptions<AwqafContext> options)
+        public AwqafDatabase(DbContextOptions<AwqafDatabase> options)
             : base(options)
         {
         }
@@ -30,7 +30,7 @@ namespace AwqafTest.Database
                     .HasColumnName("ACCOUNT_ID")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AccountNumber)
+                entity.Property(e => e.AccountName)
                     .IsRequired()
                     .HasColumnName("ACCOUNT")
                     .HasMaxLength(100);

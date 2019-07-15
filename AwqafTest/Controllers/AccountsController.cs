@@ -32,7 +32,7 @@ namespace AwqafTest.Controllers
                 viewModel.Add(new AccountViewModel
                 {
                     AccountId = account.AccountId,
-                    AccountNumber = account.AccountNumber,
+                    AccountName = account.AccountName,
                     Level1 = account.Level1,
                     Level2 = account.Level2,
                     Level3 = account.Level3,
@@ -67,7 +67,7 @@ namespace AwqafTest.Controllers
                 var account = new Account
                 {
                     AccountId = viewModel.AccountId,
-                    AccountNumber = viewModel.AccountNumber,
+                    AccountName = viewModel.AccountName,
                     Level1 = viewModel.Level1,
                     Level2 = viewModel.Level2,
                     Level3 = viewModel.Level3,

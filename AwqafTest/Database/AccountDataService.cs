@@ -6,9 +6,9 @@ namespace AwqafTest.Database
 {
     public class AccountDataService : IAccountDataService
     {
-        private readonly AwqafContext _database;
+        private readonly AwqafDatabase _database;
 
-        public AccountDataService(AwqafContext database)
+        public AccountDataService(AwqafDatabase database)
         {
             _database = database;
         }
@@ -25,7 +25,7 @@ namespace AwqafTest.Database
 
         public Account GetAccount(string account)
         {
-            return _database.Accounts.SingleOrDefault(a => a.AccountNumber == account);
+            return _database.Accounts.SingleOrDefault(a => a.AccountName == account);
         }
 
         public int GetMaxAccountId()
