@@ -73,6 +73,11 @@ namespace AwqafTest.Controllers
             if (_accountData.GetAccountById(viewModel.AccountId) == null)
                 ModelState.AddModelError("AccountId", $"Account ID does not exist.");
 
+            // Check to see if ledger already exists
+            if (_accountLedgerData
+                    .GetAccountLedger(viewModel.FiscalYearId, viewModel.AccountId, viewModel.LedgerNo) != null)
+                ModelState.AddModelError("", $"ERROR: A ledger with the Fiscal Year ID, Account ID, and Ledger Number you specified already exists.");
+
             if (ModelState.IsValid)
             {
                 var accountLedger = new AccountLedger
