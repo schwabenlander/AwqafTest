@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using AwqafTest.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,10 +14,13 @@ namespace AwqafTest.Controllers
     public class FiscalYearsController : Controller
     {
         private readonly IFiscalYearDataService _fiscalYearData;
+        private readonly IMapper _mapper;
 
-        public FiscalYearsController(IFiscalYearDataService fiscalYearData)
+        public FiscalYearsController(IFiscalYearDataService fiscalYearData, 
+                                     IMapper mapper)
         {
             _fiscalYearData = fiscalYearData;
+            _mapper = mapper;
         }
 
         // GET: FiscalYears
@@ -23,20 +28,7 @@ namespace AwqafTest.Controllers
         {
             var fiscalYears = _fiscalYearData.GetFiscalYears();
 
-            var viewModel = new List<FiscalYearViewModel>();
-
-            foreach (var fiscalYear in fiscalYears)
-            {
-                viewModel.Add(new FiscalYearViewModel
-                {
-                    FiscalYearId = fiscalYear.FiscalYearId,
-                    YearDescription = fiscalYear.YearDescription,
-                    StartDate = fiscalYear.StartDate,
-                    EndDate = fiscalYear.EndDate,
-                    IsCurrent = fiscalYear.IsCurrent > 0,
-                    IsOpen =  fiscalYear.IsOpen > 0
-                });
-            }
+            var viewModel = fiscalYears.Select(fiscalYear => _mapper.Map<FiscalYearViewModel>(fiscalYear)).ToList();
 
             return View(viewModel);
         }

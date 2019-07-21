@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using AwqafTest.Database;
+using AwqafTest.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +39,14 @@ namespace AwqafTest
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            var mapper = mappingConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
             services.AddScoped<IFiscalYearDataService, FiscalYearSqlDataService>();
             services.AddScoped<IAccountDataService, AccountDataService>();
             services.AddScoped<IAccountLedgerDataService, AccountLedgerDataService>();
